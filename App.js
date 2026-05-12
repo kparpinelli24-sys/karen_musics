@@ -13,7 +13,7 @@ import {
 } from 'react-native';
 
 // CORES PASTÉIS
-const BEGE = '#FFF7F2';
+const BG = '#FFF7F2';
 const PINK = '#F7B7C3';
 const LIGHT_PINK = '#FFE3EA';
 const MINT = '#CDE8D5';
