@@ -7,95 +7,105 @@ import {
   TextInput,
   TouchableOpacity,
   SafeAreaView,
-  Alert,
   Image,
   ScrollView,
+  Alert,
 } from 'react-native';
 
-// Cores do App
-const DARK = '#121212';
-const CARD = '#1E1E1E';
-const PURPLE = '#8A2BE2';
-const LIGHT = '#F5F5F5';
-const GRAY = '#AAAAAA';
+// CORES PASTÉIS
+const BG = '#FFF7F2';
+const PINK = '#F7B7C3';
+const LIGHT_PINK = '#FFE3EA';
+const MINT = '#CDE8D5';
+const LILAC = '#DCCCF5';
+const TEXT = '#6B5B5B';
+const WHITE = '#FFFFFF';
 
 export default function App() {
   const [nome, setNome] = useState('');
   const [musica, setMusica] = useState('');
 
-  function handleStart() {
+  function entrar() {
     if (!nome || !musica) {
-      Alert.alert('Atenção', 'Preencha todos os campos!');
+      Alert.alert( 'Preencha os campos!');
     } else {
-      Alert.alert('Bem-vindo!', 'Aproveite suas músicas favoritas 🎵');
+      Alert.alert('Bem-vindo', 'Agora é só curtir as melhores!');
     }
   }
 
   return (
     <SafeAreaView style={styles.container}>
-      <StatusBar style="light" />
 
       <ScrollView contentContainerStyle={styles.scroll}>
         <View style={styles.card}>
 
-          {/* Título */}
-          <Text style={styles.title}>BeatMusic</Text>
+      
+          <Text style={styles.title}>spotify</Text>
 
-          {/* Subtítulo */}
-          <Text style={styles.subtitle}>
-            Sua música favorita em qualquer lugar
-          </Text>
-
-          {/* Imagem */}
           <Image
-            source={{
-              uri: 'https://cdn-icons-png.flaticon.com/512/3659/3659784.png',
-            }}
+            source={require('./assets/img/vinil.png')}
             style={styles.image}
           />
 
-          {/* Campo nome */}
-          <Text style={styles.label}>Seu nome</Text>
+          <Text style={styles.description}>
+            Escute suas músicas favoritas em qualquer lugar, a qualquer hora.
+          </Text>
 
           <TextInput
             style={styles.input}
             placeholder="Digite seu nome"
-            placeholderTextColor={GRAY}
+            placeholderTextColor="#999"
             value={nome}
             onChangeText={setNome}
           />
 
-          {/* Campo música */}
-          <Text style={styles.label}>Música favorita</Text>
-
           <TextInput
             style={styles.input}
-            placeholder="Digite sua música favorita"
-            placeholderTextColor={GRAY}
+            placeholder="Qual sua música favorita?"
+            placeholderTextColor="#999"
             value={musica}
             onChangeText={setMusica}
           />
 
-          {/* Botão */}
           <TouchableOpacity
             style={styles.button}
-            onPress={handleStart}
+            onPress={entrar}
           >
-            <Text style={styles.buttonText}>COMEÇAR</Text>
+            <Text style={styles.buttonText}>
+              Vamos 
+            </Text>
           </TouchableOpacity>
 
-          {/* Informações */}
-          <View style={styles.infoBox}>
-            <Text style={styles.info}>🎵 Playlists personalizadas</Text>
+          <View style={styles.infoContainer}>
 
-            <Text style={styles.info}>🎧 Escute offline</Text>
+            <View style={[styles.infoCard, { backgroundColor: MINT }]}>
+              <Text style={styles.infoTitle}>🎧 Offline</Text>
 
-            <Text style={styles.info}>🔥 Músicas mais tocadas</Text>
+              <Text style={styles.infoText}>
+                Escute músicas sem internet.
+              </Text>
+            </View>
+
+            <View style={[styles.infoCard, { backgroundColor: LILAC }]}>
+              <Text style={styles.infoTitle}>🎙 Playlists</Text>
+
+              <Text style={styles.infoText}>
+                Feitas pelas suas mãos.
+              </Text>
+            </View>
+
+            <View style={[styles.infoCard, { backgroundColor: LIGHT_PINK }]}>
+              <Text style={styles.infoTitle}>🔈 Descubra</Text>
+
+              <Text style={styles.infoText}>
+                Conheça novas músicas.
+              </Text>
+            </View>
+
           </View>
 
-          {/* Rodapé */}
           <Text style={styles.footer}>
-            Desenvolvido por Karen
+            Desenvolvedor(a): Karen 
           </Text>
 
         </View>
@@ -105,9 +115,10 @@ export default function App() {
 }
 
 const styles = StyleSheet.create({
+
   container: {
     flex: 1,
-    backgroundColor: DARK,
+    backgroundColor: BG,
   },
 
   scroll: {
@@ -119,82 +130,103 @@ const styles = StyleSheet.create({
 
   card: {
     width: '100%',
-    backgroundColor: CARD,
-    borderRadius: 20,
-    padding: 25,
     alignItems: 'center',
   },
 
   title: {
-    fontSize: 32,
+    fontSize: 55,
+    color: PINK,
     fontWeight: 'bold',
-    color: PURPLE,
-    marginBottom: 10,
+    marginTop: 20,
   },
 
   subtitle: {
-    fontSize: 16,
-    color: LIGHT,
-    textAlign: 'center',
-    marginBottom: 20,
+    fontSize: 18,
+    color: TEXT,
+    marginBottom: 15,
   },
 
   image: {
-    width: 140,
-    height: 140,
-    marginBottom: 20,
+    width: 220,
+    height: 220,
+    marginBottom: 15,
+    resizeMode: 'contain',
   },
 
-  label: {
-    alignSelf: 'flex-start',
-    color: LIGHT,
-    fontSize: 15,
-    marginBottom: 8,
-    marginTop: 10,
+  description: {
+    fontSize: 16,
+    color: TEXT,
+    textAlign: 'center',
+    marginBottom: 25,
+    paddingHorizontal: 20,
   },
 
   input: {
     width: '100%',
-    height: 50,
-    backgroundColor: DARK,
-    borderRadius: 10,
-    paddingHorizontal: 15,
-    color: LIGHT,
-    borderWidth: 1,
-    borderColor: PURPLE,
-    marginBottom: 10,
+    backgroundColor: WHITE,
+    height: 55,
+    borderRadius: 18,
+    paddingHorizontal: 20,
+    marginBottom: 15,
+    fontSize: 16,
+    color: TEXT,
+
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+
+    shadowOpacity: 0.08,
+    shadowRadius: 4,
+    elevation: 3,
   },
 
   button: {
     width: '100%',
-    height: 50,
-    backgroundColor: PURPLE,
-    borderRadius: 10,
+    height: 55,
+    backgroundColor: PINK,
+    borderRadius: 20,
     justifyContent: 'center',
     alignItems: 'center',
-    marginTop: 20,
+    marginTop: 10,
+    marginBottom: 25,
   },
 
   buttonText: {
-    color: LIGHT,
-    fontSize: 16,
+    color: WHITE,
+    fontSize: 18,
     fontWeight: 'bold',
   },
 
-  infoBox: {
-    marginTop: 25,
+  infoContainer: {
     width: '100%',
   },
 
-  info: {
-    color: LIGHT,
+  infoCard: {
+    width: '100%',
+    borderRadius: 20,
+    padding: 18,
+    marginBottom: 15,
+  },
+
+  infoTitle: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    color: TEXT,
+    marginBottom: 8,
+  },
+
+  infoText: {
     fontSize: 15,
-    marginBottom: 10,
+    color: TEXT,
   },
 
   footer: {
-    color: GRAY,
-    marginTop: 25,
-    fontSize: 13,
+    marginTop: 15,
+    fontSize: 15,
+    color: TEXT,
+    marginBottom: 20,
   },
+
 });
