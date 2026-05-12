@@ -72,7 +72,7 @@ export default function App() {
             onPress={entrar}
           >
             <Text style={styles.buttonText}>
-              Vamos 
+              Vamos lá!
             </Text>
           </TouchableOpacity>
 
